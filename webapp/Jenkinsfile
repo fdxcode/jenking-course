@@ -6,7 +6,7 @@ pipeline {
   }
 
   environment {
-    ARTIFACT_ID = "elbuo8/webapp:${env.BUILD_NUMBER}"
+    ARTIFACT_ID = "docker run -it fdxcode/webapp:1 npm t"
   }
 
   stages {
@@ -14,7 +14,7 @@ pipeline {
       steps {
         script {
           dir("webapp") {
-            dockerImage = docker.build "${env.ARTIFACT_ID}"
+            dockerImage = "${env.ARTIFACT_ID}"
           }
         }
       }
